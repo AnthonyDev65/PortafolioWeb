@@ -1,0 +1,176 @@
+<section>
+    <div class="info-container">
+
+        <div class="left-info">
+            <p>I'm</p>
+            <p>Anthoni Castillo</p>
+            <div></div>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis ad repudiandae molestias reiciendis aspernatur vero ullam exercitationem autem modi! Iste.</p>
+        </div>
+
+        <div class="circle"></div>
+
+        <div class="right-info">
+            <p>Services</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde, optio? Tempora repudiandae modi at aliquam accusamus molestiae explicabo inventore quisquam.</p>
+            <a href="">Show More<i class="ri-arrow-right-long-line"></i></a>
+
+            <div class="social-btn">
+                <button><i class="ri-facebook-fill"></i></button>
+                <button><i class="ri-instagram-line"></i></button>
+                <button><i class="ri-pinterest-fill"></i></button>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+<style>
+
+    :root {
+        --font: Montserrat;
+        --p-text-color: #fff;
+        --s-text-color: #a1a1a1;
+        --c-text-color: #FDC62E;
+    }
+
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    section{
+        height: auto;
+        width: 100%;
+        display: flex;
+        position: relative;
+        overflow: hidden;
+    }
+
+    section .circle {
+        position: absolute;
+        background-color: #2C2C38;
+        width: 512px;
+        height: 512px;
+
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .info-container {
+        display: grid;
+        grid-template-columns: 60% 40%;
+        padding: 80px 80px;
+    }
+
+    .info-container .left-info {
+        z-index: 1;
+        
+    }
+
+    .info-container .left-info p{
+        font-family: var(--font);
+        font-size: 54px;
+        font-weight: 300;
+        color: var(--s-text-color);
+    }   
+    
+    .info-container .left-info p + p{
+        font-family: var(--font);
+        font-size: 54px;
+        font-weight: 700;
+        color: white;   
+    }    
+
+    .info-container .left-info div{
+        height: 4px;
+        width: 100px;
+        background-color: var(--c-text-color);
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .info-container .left-info p + p + div + p{
+        font-family: var(--font);
+        font-size: 18px;
+        font-weight: 400;
+        color: var(--s-text-color);
+        max-width: 250px;
+    } 
+
+
+    .info-container .right-info{
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .info-container .right-info p{
+        font-family: var(--font);
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--s-text-color);
+    }   
+    
+    .info-container .right-info p + p{
+        font-family: var(--font);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--p-text-color);
+    }   
+
+    .info-container .right-info p + p + a{
+        font-family: var(--font);
+        font-size: 12px;
+        text-decoration: none;
+        font-weight: 400;
+        color: var(--c-text-color);
+    }   
+    
+
+    .social-btn {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+
+    }
+
+    .info-container .right-info p + p + a + div > button{
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        gap: 110px;
+
+        font-family: var(--font);
+        font-size: 22px;
+        padding: 0px;
+        margin: 0px;
+        background-color: #444451;
+        border: 0px;
+        border-radius: 50%;
+        
+        text-decoration: none;
+        font-weight: 400;
+        color: var(--c-text-color);
+    }  
+
+
+
+
+
+
+
+
+
+
+
+</style>
