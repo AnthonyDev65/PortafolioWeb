@@ -1,0 +1,99 @@
+<header class="main-header">
+    <div class="mastil">
+        <h1><i class="ri-terminal-box-fill"></i>AnthoniDev</h1>
+    </div>
+
+    <nav class="header-nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Portafolio</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="header-buttons">
+        <button><i class="ri-linkedin-box-fill"></i></button>
+        <button><i class="ri-menu-2-line"></i></button>
+    </div>
+
+</header>
+
+<style>
+
+    :root {
+    --p-text-color: white;
+    --s-text-color: #FDC62E;
+    --h-text-color: #a1a1a1;
+    --font: Montserrat;
+    --bg: #373543;
+    
+    }
+
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    body {
+        background-color: var(--bg);
+
+    }
+
+    .main-header{
+        display: flex;
+        align-items: center;
+        padding: 20px 40px;
+        justify-content: space-between;
+    }
+
+    .mastil h1{
+        font-family: var(--font);
+        color: var(--p-text-color);
+        font-size: 22px;
+        font-weight: 500;   
+        user-select: none;
+    }
+
+    .ri-terminal-box-fill {
+        color: var(--s-text-color);
+        margin-right: 4px;    
+    }
+
+    .header-nav{
+        display: flex;
+        margin-right: auto;
+        margin-left: 100px;
+    }
+
+    .header-nav ul{
+        display: flex;
+        list-style: none;
+        gap: 30px;
+        font-family: var(--font);
+    }
+
+    .header-nav ul li a {
+        text-decoration: none;
+        color: var(--h-text-color);
+        transition: all .2s ease;
+    }
+
+    .header-nav ul li a:hover {        
+        color: var(--p-text-color);
+    }
+
+    .header-buttons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .header-buttons button {
+        background-color: transparent;
+        border: 0px;
+    }
+    .header-buttons i {
+        color: white;
+        font-size: 22px;
+    }
+
+</style>
