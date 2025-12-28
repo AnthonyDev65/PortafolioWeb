@@ -1,0 +1,207 @@
+<section>
+    <header class="second-sec-header">
+        <div class="i-container">
+            <div>Meta</div>
+            <div>Google</div>
+            <div>LinkedIN</div>
+            <div>Slack</div>
+        </div>
+    </header>
+
+
+
+
+    <div class="info-container">
+        <div>
+            <p class="w"> What Can i Do for Your Needs</p>
+            <p class="ww">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat veniam, itaque similique autem eligendi repellendus?</p>
+            
+            <div class="metrics-container">
+                <div>
+                    <p>250+</p>
+                    <p>Lorem, ipsum.</p>
+                </div>
+
+                <div>
+                    <p>250+</p>
+                    <p>Lorem, ipsum.</p>
+                </div>
+
+                <div>
+                    <p>250+</p>
+                    <p>Lorem, ipsum.</p>
+                </div>
+
+                <div>
+                    <p>250+</p>
+                    <p>Lorem, ipsum.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="proyects-container">
+            
+            <div>
+                <img src="https://picsum.photos/130/80" alt="">
+                <div>
+                    <p>Web Design</p>
+                    <p>10 Projects</p>
+                </div>
+
+            </div>
+
+            <div>
+                <img src="https://picsum.photos/130/80" alt="">
+                <div>
+                    <p>Android/IOS</p>
+                    <p>10 Projects</p>
+                </div>
+            </div>
+
+            <div>
+                <img src="https://picsum.photos/130/80" alt="">
+                <div>
+                    <p>Desktop</p>
+                    <p>10 Projects</p>
+                </div>
+            </div>
+
+        </div>
+    
+
+    </div>
+
+</section>
+
+
+<style>
+
+    :root {
+        --font: Montserrat;
+        --p-text-color: #fff;
+        --s-text-color: #a1a1a1;
+        --c-text-color: #FDC62E;
+    }
+
+    section {
+        width: 100%;
+        height: 100%;
+        background-color: #282830;
+    }
+
+    .second-sec-header {
+        background-color: #414050;
+        margin: 0px 80px;
+        transform: translateY(-50%);
+    }
+
+    .i-container {
+        display: grid;
+        grid-template-columns: 24% 24% 24% 24%;
+        padding: 20px 20px;
+        justify-content: space-around;
+    }
+
+    .i-container div {
+        display: flex;
+        justify-content: center;
+        background-color: #353444;
+        padding: 20px;
+    }
+
+
+
+
+    .info-container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        padding: 80px;
+        font-family: var(--font);
+        color: var(--p-text-color);
+        
+        
+    }
+
+    .info-container .w {
+        font-family: var(--font);
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    .info-container .ww {
+        color: var(--s-text-color);
+        max-width: 300px;
+    }
+
+    .metrics-container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    .metrics-container div > p{
+        color: var(--c-text-color);
+        font-size: 28px;
+        font-weight: 600;
+    }
+    .metrics-container div > p + p{
+        color: var(--s-text-color);
+        font-size: 14px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    .proyects-container {
+        display: grid;
+        align-items: center;
+    }
+
+    .proyects-container div{
+        display: flex;
+        align-items: center;
+        
+    }
+
+    .proyects-container div img + div{
+        display: grid;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 15px;
+    }
+
+    .proyects-container div img + div > p{
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .proyects-container div img + div > p + p{
+        font-size: 14px;
+        margin-top: 10px;
+        color: var(--s-text-color);
+    }
+
+    @media  (max-width: 436px)  {
+
+        .info-container {
+            grid-template-columns: 100%;
+        }
+        .metrics-container {
+            margin-bottom: 40px;
+
+        }
+        
+    }
+
+
+
+
+</style>
