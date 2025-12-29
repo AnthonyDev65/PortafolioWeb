@@ -5,16 +5,29 @@
 
     <nav class="header-nav">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Portafolio</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Projectos</a></li>
+            <li><a href="#">Recursos</a></li>
+            <li><a href="#">Sobre mi</a></li>
         </ul>
     </nav>
 
     <div class="header-buttons">
         <button class="menu-btn"><i class="ri-menu-2-line"></i></button>
-        <button><i class="ri-github-fill"></i></button>
-        <button><i class="ri-linkedin-box-fill"></i></button>
+
+
+
+        
+        <a href="https://github.com/AnthonyDev65" target="_blank">
+            <button><i class="ri-github-fill"></i></button>
+        </a>
+
+        <a href="https://www.linkedin.com/in/antony-castillo-907a903a1" target="_blank">
+            <button><i class="ri-linkedin-box-fill"></i></button>
+        </a>
+        
+
+
     </div>
 
 </header>
@@ -96,7 +109,16 @@
     .header-buttons button {
         background-color: transparent;
         border: 0px;
+        transition: all .2s ease;
     }
+
+    .header-buttons button:hover {
+        opacity: .7;
+
+    }
+
+
+
     .header-buttons i {
         color: white;
         font-size: 22px;
