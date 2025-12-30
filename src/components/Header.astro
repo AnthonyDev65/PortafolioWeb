@@ -16,13 +16,11 @@
         <button class="menu-btn"><i class="ri-menu-2-line"></i></button>
 
 
-
-        
         <a href="https://github.com/AnthonyDev65" target="_blank">
             <button><i class="ri-github-fill"></i></button>
         </a>
 
-        <a href="https://www.linkedin.com/in/antony-castillo-907a903a1" target="_blank">
+        <a href="https://www.linkedin.com/in/anthoni-castillo-moncion-907a903a1/" target="_blank">
             <button><i class="ri-linkedin-box-fill"></i></button>
         </a>
     </div>
@@ -115,32 +113,26 @@
 
     }
 
-
-
     .header-buttons i {
         color: white;
         font-size: 22px;
     }
 
-
-    @media (max-width: 600px) { /* Para pantallas con un ancho máximo de 600px (móviles) */
-        .header-nav {
-            visibility: collapse;
-        }
-        .header-buttons button + button + button {
-            visibility: visible;
-        }
-
+    .menu-btn { 
+            display: none;
     }
 
-    @media (min-width: 600px) {
-        .header-nav {
-            visibility: visible;
-        }
-        .menu-btn   {
-            visibility: collapse;
+    @media (max-width: 600px) { /* Para pantallas con un ancho máximo de 600px (móviles) */
+        .main-header {
+            padding: 15px 20px;
         }
 
+        .header-nav {
+            display: none;
+        }
+        .menu-btn {
+            display: none;
+        }
     }
 
 
