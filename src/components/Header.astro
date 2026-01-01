@@ -1,3 +1,11 @@
+---
+const {url} = Astro;
+const path = url.pathname;
+
+---
+
+
+
 <header class="main-header">
     <div class="mastil">
         <h1><i class="ri-terminal-box-fill"></i>AnthoniDev</h1>
@@ -5,12 +13,10 @@
 
     <nav class="header-nav">
         <ul>
-            <li><a href="/">Inicio</a></li>
-            <li>
-                <a href="/projects">Projectos</a>
-            </li>
-            <li><a href="#">Recursos</a></li>
-            <li><a href="#">Sobre mi</a></li>
+            <li><a href="/" class={path === "/" ? "active" : "" }>Inicio</a></li>
+            <li><a href="/projects" class={path === "/projects" ? "active" : "" }>Projectos</a></li>
+            <li><a href="/">Recursos</a></li>
+            <li><a href="/">Sobre mi</a></li>
         </ul>
     </nav>
 
@@ -98,9 +104,24 @@
         transition: all .2s ease;
     }
 
+    .header-nav ul li a.active{
+        color: var(--c-text-color);
+        font-weight: bold;
+    }
+
+    
+
     .header-nav ul li a:hover {        
         color: var(--p-text-color);
     }
+
+
+
+
+
+
+
+
 
     .header-buttons {
         display: flex;
@@ -127,6 +148,11 @@
     .menu-btn { 
             display: none;
     }
+
+    
+
+
+
 
     @media (max-width: 600px) { /* Para pantallas con un ancho máximo de 600px (móviles) */
         .main-header {
