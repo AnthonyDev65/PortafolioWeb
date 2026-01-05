@@ -11,7 +11,7 @@ const path = url.pathname;
     <nav class="header-nav">
         <ul>
             <li><a href="/" class={path === "/" ? "active" : "" }>Inicio</a></li>
-            <li><a href="/projects" class={path === "https://anthonidev.vercel.app/projects" ? "active" : "" }>Projectos</a></li>
+            <li><a href="/projects" class={path.startsWith("/projects") ? "active" : "" }>Projectos</a></li>
             <li><a href="/">Recursos</a></li>
             <li><a href="/">Sobre mi</a></li>
         </ul>
