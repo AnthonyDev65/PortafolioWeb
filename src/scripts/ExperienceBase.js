@@ -1,4 +1,4 @@
-const Experience = [
+export const Experience = [
     {
         App : "Fonicris",
         Descripcion : "App para gestionar Archivos",
