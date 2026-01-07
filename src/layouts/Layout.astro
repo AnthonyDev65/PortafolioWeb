@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Resource from '../styles/globalComponents.astro'
 import Header from '../components/Version 2/header.astro'
-import PhoneShow from '../components/Version 2/App/Fonicris.astro'
+
 ---
 
 <!doctype html>
@@ -26,10 +26,9 @@ import PhoneShow from '../components/Version 2/App/Fonicris.astro'
 		<meta property="og:image" content="" />
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="https://erickvpomie.vercel.app/" />
-		<meta property="twitter:title" content="Erick Pomié | Portfolio" />
-		<meta property="twitter:description" content="Welcome to my portfolio. I am Erick Pomié, a web developer with over three years of experience in designing, developing, and maintaining front-end web applications." />
-		<meta property="twitter:image" content="https://raw.githubusercontent.com/erickvpomie/dev-portfolio/main/public/og-image.webp" />
+		<meta property="twitter:url" content="https://anthonidev.vercel.app/" />
+		<meta property="twitter:title" content="Anthoni Castillo | Portfolio" />
+		<meta property="twitter:description" content="Welcome to my portfolio. I am Anthoni Castillo, a web developer with over three years of experience in designing, developing, and maintaining front-end web applications." />
 		
 		<Resource/>
 
@@ -52,31 +51,3 @@ import PhoneShow from '../components/Version 2/App/Fonicris.astro'
 	body {background-color: #0B0A10; margin: 0; width: 100%; min-height: 100vh; scroll-behavior: smooth;}
 </style>
 
-
-<script is:inline>
-
-const contrastBTN = document.getElementById('ContrastBTN');
-const contrastON = document.getElementById('ContrastBTN-ON');
-const contrastOFF = document.getElementById('ContrastBTN-OFF');
-
-
-let darkMode = false;
-
-contrastBTN.addEventListener('click', () => {
-
-    if (darkMode == false) {
-
-		contrastON?.classList.replace("collapse","visible");
-        contrastOFF?.classList.replace("visible", "collapse"); //sol
-		darkMode = true;
-	
-    } else {
-        
-		contrastON?.classList.replace("visible", "collapse");
-		contrastOFF?.classList.replace("collapse","visible"); //sol
-		darkMode = false;
-		
-    }
-});
-
-</script>
