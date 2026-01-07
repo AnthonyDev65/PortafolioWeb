@@ -7,8 +7,8 @@ import { Experience } from '../../scripts/ExperienceBase.js'
 
 <header class="w-full flex flex-col gap-2 text-center" style="font-family: outfit; color:white;">
 
-    <h1 class="text-3xl font-semibold" style="opacity: 1; transform: none;">Projects</h1>
-    <p class="opacity-70" style="opacity: 1; transform: none;" >
+    <h1 class="text-3xl font-semibold text-amber-300" style="opacity: 1; transform: none;">Projects</h1>
+    <p class="opacity-70" >
         Here are some projects I've worked on in the past few years.
     </p>
 </header>
@@ -19,7 +19,7 @@ import { Experience } from '../../scripts/ExperienceBase.js'
         <Card title={Exp.App} description={Exp.Descripcion} category={Exp.Categoria} 
             tags={Exp.tecnologias} badgeText={Exp.BadgeText} link={Exp.link} badge={Exp.badge}>
 
-            <PhoneCover img='https://wallpapers.ispazio.net/wp-content/uploads/2025/06/ios-26-wallpaper-by-ispazio-1-1280x2774.jpg'/>
+            <PhoneCover img={Exp.img} statuscolor={Exp.statusColor} statusicon={Exp.statusIcon}/>
         </Card> 
     ))}
 
