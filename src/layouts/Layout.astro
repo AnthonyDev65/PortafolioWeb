@@ -50,3 +50,32 @@ import Header from '../components/Version 2/header.astro'
 	html,
 	body {background-color: #0B0A10; margin: 0; width: 100%; min-height: 100vh; scroll-behavior: smooth;}
 </style>
+
+
+<script is:inline>
+
+const contrastBTN = document.getElementById('ContrastBTN');
+const contrastON = document.getElementById('ContrastBTN-ON');
+const contrastOFF = document.getElementById('ContrastBTN-OFF');
+
+
+let darkMode = false;
+
+contrastBTN.addEventListener('click', () => {
+
+    if (darkMode == false) {
+
+		contrastON?.classList.replace("collapse","visible");
+        contrastOFF?.classList.replace("visible", "collapse"); //sol
+		darkMode = true;
+	
+    } else {
+        
+		contrastON?.classList.replace("visible", "collapse");
+		contrastOFF?.classList.replace("collapse","visible"); //sol
+		darkMode = false;
+		
+    }
+});
+
+</script>

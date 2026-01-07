@@ -1,21 +1,26 @@
 ---
 import Card from '../Version 2/UI/ProjectsCard.astro'
+import PhoneCover from '../Version 2/UI/IphoneCover.astro'
 import { Experience } from '../../scripts/ExperienceBase.js'
 ---
 
 
 <header class="w-full flex flex-col gap-2 text-center" style="font-family: outfit; color:white;">
-    
+
     <h1 class="text-3xl font-semibold" style="opacity: 1; transform: none;">Projects</h1>
     <p class="opacity-70" style="opacity: 1; transform: none;" >
         Here are some projects I've worked on in the past few years.
     </p>
-
 </header>
+
 <section class="w-full grid auto-rows-[380px] lg:auto-rows-[140px] grid-cols-8 gap-4">
 
     {Experience.map(Exp => (
-        <Card title={Exp.App} description={Exp.Descripcion} category={Exp.Categoria} tags={Exp.tecnologias} badgeText={Exp.BadgeText} link={Exp.link}/> 
+        <Card title={Exp.App} description={Exp.Descripcion} category={Exp.Categoria} 
+            tags={Exp.tecnologias} badgeText={Exp.BadgeText} link={Exp.link} badge={Exp.badge}>
+
+            <PhoneCover img='https://wallpapers.ispazio.net/wp-content/uploads/2025/06/ios-26-wallpaper-by-ispazio-1-1280x2774.jpg'/>
+        </Card> 
     ))}
 
 </section>  
