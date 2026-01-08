@@ -1,7 +1,12 @@
 ---
 import Card from '../Version 2/UI/ProjectsCard.astro'
 import PhoneCover from '../Version 2/UI/IphoneCover.astro'
+import MacCover from '../Version 2/UI/MacCover.astro'
+
+
+
 import { Experience } from '../../scripts/ExperienceBase.js'
+import { PCExperience } from '../../scripts/ExperienceBase.js'
 ---
 
 
@@ -19,7 +24,19 @@ import { Experience } from '../../scripts/ExperienceBase.js'
         <Card title={Exp.App} description={Exp.Descripcion} category={Exp.Categoria} 
             tags={Exp.tecnologias} badgeText={Exp.BadgeText} link={Exp.link} badge={Exp.badge}>
 
-            <PhoneCover img={Exp.img} statuscolor={Exp.statusColor} statusicon={Exp.statusIcon}/>
+            <div class="flex w-full justify-center">
+                <PhoneCover img={Exp.img} statuscolor={Exp.statusColor} statusicon={Exp.statusIcon}/>
+            </div>
+
+        </Card> 
+    ))}
+
+    {PCExperience.map(Exp => (
+        <Card title={Exp.App} description={Exp.Descripcion} category={Exp.Categoria} 
+            tags={Exp.tecnologias} badgeText={Exp.BadgeText} link={Exp.link} badge={Exp.badge}>
+
+            <MacCover img={Exp.img} url={Exp.link}/>
+
         </Card> 
     ))}
 

@@ -60,3 +60,18 @@ export const Experience = [
         statusIcon: 'white',
     },
 ]
+
+
+export const PCExperience = [
+    {
+        App : "FonicrisPC",
+        Descripcion : "App to manage assets",
+        Categoria : "Work Experiences",
+        tecnologias : ["C#", "XAML", ".Net"],
+        badge : false,
+        BadgeText : 'Reciente',
+        BadgeColor : ' ',
+        link : 'https://fonicris.versatile.do',
+        img : '/public/appsShowcase/FonicrisPC.png',
+    },
+]

@@ -3,6 +3,8 @@ import '../styles/global.css';
 import Resource from '../styles/globalComponents.astro'
 import Header from '../components/Version 2/header.astro'
 
+import Mac from '../components/Version 2/UI/MacCover.astro'
+
 ---
 
 <!doctype html>
@@ -41,6 +43,7 @@ import Header from '../components/Version 2/header.astro'
 			<main class="w-full flex flex-col gap-10 items-center max-x-5xl px-5 xl:max-w-6xl">
 				<slot />
 			</main>
+			<Mac/>
 
 		</div>
 	</body>
