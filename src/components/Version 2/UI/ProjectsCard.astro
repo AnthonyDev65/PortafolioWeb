@@ -27,12 +27,12 @@ const {
 <div class="relative flex flex-col rounded-3xl text-white bg-[#1C1E23] p-6 gap-3 border-2 border-transparent overflow-hidden row-span-1 col-span-8 lg:p-8 lg:row-span-4 xl:col-span-4" style="opacity: 1; transform: none;">
     <div class="flex flex-col gap-3 ">
 
-        <div class="flex items-center gap-3 opacity-50 z-1">
+        <header class="flex items-center gap-3 opacity-50 z-1">
             <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 5l-8-4-8 4 8 4 8-4zM8 2.328l5.345 2.672-5.345 2.672-5.345-2.672 5.345-2.672zM14.398 7.199l1.602 0.801-8 4-8-4 1.602-0.801 6.398 3.199zM14.398 10.199l1.602 0.801-8 4-8-4 1.602-0.801 6.398 3.199z"></path></svg>
             <span class="font-semibold uppercase">
-                <span>{category}</span>
+                <span style="font-family: outfit;">{category}</span>
             </span>
-        </div>
+        </header>
 
         {badge && (
 
@@ -45,21 +45,21 @@ const {
         <a href={link} class="p-2 border-2 border-dusky dark:border-moonlit opacity-40 rounded-full absolute top-6 right-6 lg:top-8 lg:right-8 cursor-pointer hover:bg-dusky hover:text-white dark:hover:bg-moonlit dark:hover:text-dusky transition-colors duration-150 z-1">
             <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"></path></svg>
         </a>
+        
 
         <div class="flex flex-col gap-1 z-1">
             <h3 style="font-family: outfit;" class="text-3xl font-bold">{title}</h3> 
             <p class="opacity-70" style="font-family: outfit;">{description}</p>
-            <div class="flex items-center gap-2 opacity-90 font-medium mt-2">
+            <div class="flex flex-wrap items-center gap-2 opacity-90 font-medium mt-2">
                 
                 {
                 tags.map(tags => (
-                    <Badge>
-                        <span class="text-sm">{tags}</span>
-                    </Badge>
+                    <Badge text={tags}/>
                 ))}
 
-                
             </div>
+
+            
         </div>
 
         <div>

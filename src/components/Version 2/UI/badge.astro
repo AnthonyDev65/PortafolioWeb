@@ -1,3 +1,175 @@
-<span class="flex items-center text-xs font-medium me-2 px-2.5 py-0.5 rounded-2xl bg-blue-600 text-white dark:bg-blue-900 dark:text-blue-300" style="font-family: outfit;">
-    <slot />
+---
+export interface Props {
+    text: string;
+}
+
+const {
+    text = "Badge",
+    bg = '',
+    tc = '',
+    sc = ''
+} = Astro.props;
+
+// Mapeo completo de tecnologías y tags a clases de Tailwind
+// Las claves están en minúsculas para comparación insensible a mayúsculas/minúsculas
+const techColors: Record<string, string> = {
+    // Lenguajes de programación
+    'javascript': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    'js': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    'typescript': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'ts': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'python': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'java': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    'c#': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'csharp': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'php': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    'ruby': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    'go': 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300',
+    'golang': 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300',
+    'rust': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
+    'kotlin': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    'swift': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
+    
+    // Frameworks frontend
+    'react': 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300',
+    'vue': 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-300',
+    'angular': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    'svelte': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
+    'next': 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300',
+    'nuxt': 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-300',
+    'astro': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    'gatsby': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    
+    // Frameworks backend
+    'node': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'express': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'nestjs': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    'django': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'flask': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
+    'spring': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'laravel': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    'rails': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    '.net': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    'asp.net': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    
+    // Bases de datos
+    'sql': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'mysql': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'postgresql': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'mongodb': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'redis': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    'sqlite': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'oracle': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    'firebase': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    'supabase': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    
+    // Estilos y diseño
+    'css': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'html': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
+    'tailwind': 'bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-300',
+    'bootstrap': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    'sass': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
+    'less': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'styled': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
+    
+    // Herramientas y utilities
+    'docker': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'kubernetes': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'git': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
+    'github': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
+    'gitlab': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
+    'aws': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    'azure': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'gcp': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'graphql': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
+    'rest': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'api': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    
+    // Plataformas y targets
+    'mobile': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    'pc': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'desktop': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'ios': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
+    'android': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'web': 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300',
+    'server': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
+    'cloud': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    
+    // Tipos de proyecto
+    'landingpage': 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300',
+    'landing': 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300',
+    'ecommerce': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    'dashboard': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'blog': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'portfolio': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    'cms': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
+    'saas': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    
+    // UI/UX y diseño
+    'ui': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
+    'ux': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    'design': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
+    'figma': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
+    'adobe': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    'sketch': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    
+    // Específicos de Microsoft
+    'xaml': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'wpf': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'winforms': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'uwp': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'blazor': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    
+    // Testing
+    'jest': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    'testing': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    'cypress': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'vitest': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    
+    // DevOps
+    'ci/cd': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'devops': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'jenkins': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    'terraform': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    
+    // Métodologías
+    'agile': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'scrum': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'kanban': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300'
+};
+
+// Función para normalizar y buscar coincidencias
+function getColorClass(text: string): string {
+    // Convertir a minúsculas y quitar espacios/puntuación extra
+    const normalizedText = text.toLowerCase().trim();
+    
+    // Primero buscar coincidencia exacta
+    if (techColors[normalizedText]) {
+        return techColors[normalizedText];
+    }
+    
+    // Buscar coincidencias parciales (para textos como "React Native", "Next.js", etc.)
+    for (const [key, value] of Object.entries(techColors)) {
+        // Verificar si el texto contiene la clave
+        if (normalizedText.includes(key)) {
+            return value;
+        }
+        
+        // También verificar sin espacios o con guiones
+        const textWithoutSpaces = normalizedText.replace(/[\s\-_\.]/g, '');
+        if (textWithoutSpaces.includes(key)) {
+            return value;
+        }
+    }
+    
+    // Si no hay coincidencia, usar color por defecto
+    return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
+}
+
+const colorClass = getColorClass(text);
+const badgeClass = `flex items-center text-sm font-medium me-2 px-2.5 py-0.5 rounded-2xl ${colorClass}`;
+---
+
+<span class={badgeClass} style="font-family: outfit;">
+    {text}
 </span>

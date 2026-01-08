@@ -4,7 +4,7 @@ export const Experience = [
         Descripcion : "App to manage assets",
         Categoria : "Work Experiences",
         tecnologias : [
-            "C#", "XAML", ".Net"
+            "Mobile", "C#", "XAML", ".NET" , "MAUI", "Google Console" 
         ],
         badge : false,
         BadgeText : 'Reciente',
@@ -19,7 +19,7 @@ export const Experience = [
         Descripcion : "App to manage clients",
         Categoria : "Work Experiences",
         tecnologias : [
-            "C#", "XAML", ".Net"
+            "Mobile", "C#", "XAML", ".NET" , "SQLite"
         ],
         badge : false,
         BadgeText : 'Reciente',
@@ -34,7 +34,7 @@ export const Experience = [
         Descripcion : "University app for managing classes and subjects",
         Categoria : "Personal Experiences",
         tecnologias : [
-            "C#", "XAML", ".Net"
+            "Mobile", "C#", "XAML", ".NET" , "MAUI" , "SQLite"
         ],
         badge : false,
         BadgeText : 'Reciente',
@@ -49,7 +49,7 @@ export const Experience = [
         Descripcion : "Music app for scales and notes",
         Categoria : "Personal Experiences",
         tecnologias : [
-            "C#", "XAML", ".Net"
+            "Mobile", "C#", "XAML", ".NET", "MAUI"
         ],
         badge : false,
         BadgeText : 'Reciente',
@@ -61,17 +61,27 @@ export const Experience = [
     },
 ]
 
-
 export const PCExperience = [
     {
         App : "FonicrisPC",
         Descripcion : "App to manage assets",
         Categoria : "Work Experiences",
-        tecnologias : ["C#", "XAML", ".Net"],
+        tecnologias : ["PC","C#", "XAML", ".NET", "WPF", "Google Console"],
         badge : false,
         BadgeText : 'Reciente',
         BadgeColor : ' ',
         link : 'https://fonicris.versatile.do',
         img : '/public/appsShowcase/FonicrisPC.png',
+    },
+    {
+        App : "Fashion E-Commerce",
+        Descripcion : "App to manage assets",
+        Categoria : "Personal Experiences",
+        tecnologias : ["LANDINGPAGE","ASTRO", "HTML", "Tailwind" ],
+        badge : false,
+        BadgeText : 'Reciente',
+        BadgeColor : ' ',
+        link : 'https://fashion.ecommerce.com',
+        img : '/public/appsShowcase/FashionLanding.png',
     },
 ]
