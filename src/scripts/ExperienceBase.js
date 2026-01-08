@@ -71,7 +71,7 @@ export const PCExperience = [
         BadgeText : 'Reciente',
         BadgeColor : ' ',
         link : 'https://fonicris.versatile.do',
-        img : '/public/appsShowcase/FonicrisPC.png',
+        img : '/appsShowcase/FonicrisPC.png',
     },
     {
         App : "Fashion E-Commerce",
@@ -82,6 +82,6 @@ export const PCExperience = [
         BadgeText : 'Reciente',
         BadgeColor : ' ',
         link : 'https://fashion.ecommerce.com',
-        img : '/public/appsShowcase/FashionLanding.png',
+        img : '/appsShowcase/FashionLanding.png',
     },
 ]
