@@ -34,7 +34,7 @@ export const Experience = [
         Descripcion : "University app for managing classes and subjects",
         Categoria : "Personal Experiences",
         tecnologias : [
-            "Mobile", "C#", "XAML", ".NET" , "MAUI" , "SQLite"
+            "Mobile", "C#", "XAML", ".NET" , "MAUI" , "SQLite", "React"
         ],
         badge : false,
         BadgeText : 'Reciente',
