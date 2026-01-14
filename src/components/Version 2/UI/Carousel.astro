@@ -1,0 +1,216 @@
+---
+export interface Props {
+    id: string;
+    title: string;
+    description: string;
+    projects: any[];
+    type: 'mobile' | 'desktop' | 'landing';
+}
+
+const { id, title, description, projects, type } = Astro.props;
+---
+
+<div class="w-full mb-0">
+    <!-- Header de la sección -->
+    <div hidden class="flex flex-col gap-2 mb-6">
+        <h2 class="text-2xl font-bold text-amber-300" style="font-family: outfit;">{title}</h2>
+        <p class="text-white opacity-70" style="font-family: outfit;">{description}</p>
+    </div>
+
+    <!-- Contenedor del carrusel -->
+    <div class="relative">
+        <!-- Botón anterior -->
+        <button 
+            class="carousel-btn carousel-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#1C1E23] hover:bg-[#2A2D35] text-white p-3 rounded-full shadow-lg transition-all duration-200 -ml-6"
+            data-carousel={id}
+            data-direction="prev"
+        >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+
+        <!-- Botón siguiente -->
+        <button 
+            class="carousel-btn carousel-next absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#1C1E23] hover:bg-[#2A2D35] text-white p-3 rounded-full shadow-lg transition-all duration-200 -mr-6"
+            data-carousel={id}
+            data-direction="next"
+        >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <!-- Contenedor de slides -->
+        <div class="overflow-hidden">
+            <div 
+                class="carousel-track flex transition-transform duration-300 ease-in-out"
+                data-carousel-track={id}
+                data-carousel-type={type}
+            >
+                <slot />
+            </div>
+        </div>
+
+        <!-- Indicadores -->
+        <div class="flex justify-center mt-6 gap-2">
+            {Array.from({ length: type === 'desktop' ? projects.length : Math.ceil(projects.length / 2) }).map((_, index) => (
+                <button 
+                    class={`carousel-indicator w-2 h-2 rounded-full transition-all duration-200 ${
+                        index === 0 ? 'bg-amber-300' : 'bg-white opacity-30'
+                    }`}
+                    data-carousel={id}
+                    data-slide={index}
+                ></button>
+            ))}
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const carousels = document.querySelectorAll('[data-carousel-track]');
+    
+    carousels.forEach(carousel => {
+        const carouselId = carousel.getAttribute('data-carousel-track');
+        const carouselType = carousel.getAttribute('data-carousel-type');
+        if (!carouselId) return;
+        
+        const track = carousel as HTMLElement;
+        const slides = Array.from(track.children) as HTMLElement[];
+        const prevBtn = document.querySelector(`[data-carousel="${carouselId}"][data-direction="prev"]`) as HTMLElement;
+        const nextBtn = document.querySelector(`[data-carousel="${carouselId}"][data-direction="next"]`) as HTMLElement;
+        const indicators = document.querySelectorAll(`[data-carousel="${carouselId}"][data-slide]`);
+        
+        let currentSlide = 0;
+        
+        function getSlidesPerView(): number {
+            if (carouselType === 'desktop') return 1;
+            return window.innerWidth >= 640 ? 2 : 1;
+        }
+        
+        function getTotalSlides(): number {
+            const slidesPerView = getSlidesPerView();
+            return Math.ceil(slides.length / slidesPerView);
+        }
+        
+        function updateCarousel() {
+            const slidesPerView = getSlidesPerView();
+            const slideWidth = 100 / slidesPerView;
+            // Mover de 2 en 2 (o de 1 en 1 para desktop)
+            const translateX = -(currentSlide * slidesPerView * slideWidth);
+            
+            track.style.transform = `translateX(${translateX}%)`;
+            
+            const totalSlides = getTotalSlides();
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                const indicatorEl = indicator as HTMLElement;
+                if (index === currentSlide) {
+                    indicatorEl.classList.add('bg-amber-300');
+                    indicatorEl.classList.remove('bg-white', 'opacity-30');
+                } else {
+                    indicatorEl.classList.remove('bg-amber-300');
+                    indicatorEl.classList.add('bg-white', 'opacity-30');
+                }
+            });
+            
+            // Update button states
+            if (prevBtn) {
+                prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+                prevBtn.style.pointerEvents = currentSlide === 0 ? 'none' : 'auto';
+            }
+            if (nextBtn) {
+                nextBtn.style.opacity = currentSlide >= totalSlides - 1 ? '0.5' : '1';
+                nextBtn.style.pointerEvents = currentSlide >= totalSlides - 1 ? 'none' : 'auto';
+            }
+        }
+        
+        function nextSlide() {
+            const totalSlides = getTotalSlides();
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateCarousel();
+            }
+        }
+        
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateCarousel();
+            }
+        }
+        
+        function goToSlide(slideIndex: number) {
+            const totalSlides = getTotalSlides();
+            if (slideIndex >= 0 && slideIndex < totalSlides) {
+                currentSlide = slideIndex;
+                updateCarousel();
+            }
+        }
+        
+        // Event listeners
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSlide(index));
+        });
+        
+        // Handle window resize
+        let resizeTimeout: number;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = window.setTimeout(() => {
+                const totalSlides = getTotalSlides();
+                if (currentSlide >= totalSlides) {
+                    currentSlide = Math.max(0, totalSlides - 1);
+                }
+                updateCarousel();
+            }, 250);
+        });
+        
+        // Initialize
+        updateCarousel();
+    });
+});
+</script>
+
+<style>
+.carousel-btn:hover {
+    transform: scale(1.05);
+}
+
+.carousel-indicator:hover {
+    opacity: 0.7 !important;
+}
+
+/* Estilos para el carrusel responsive */
+.carousel-track {
+    width: 100%;
+}
+
+.carousel-track > * {
+    flex: 0 0 auto;
+}
+
+/* Mobile: 1 slide por vista */
+@media (max-width: 639px) {
+    .carousel-track > * {
+        width: 100%;
+    }
+}
+
+/* Desktop y Landing: 2 slides por vista en pantallas grandes */
+@media (min-width: 640px) {
+    .carousel-track[data-carousel-track$="mobile-carousel"] > * {
+        width: 50%;
+    }
+    
+    .carousel-track[data-carousel-track$="desktop-carousel"] > *,
+    .carousel-track[data-carousel-track$="landing-carousel"] > * {
+        width: 100%;
+    }
+}
+</style>

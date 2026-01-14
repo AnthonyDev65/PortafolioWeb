@@ -3,167 +3,156 @@ export interface Props {
     text: string;
 }
 
-const {
-    text = "Badge",
-    bg = '',
-    tc = '',
-    sc = ''
-} = Astro.props;
+const { text = "Badge" } = Astro.props;
 
-// Mapeo completo de tecnologías y tags a clases de Tailwind
-// Las claves están en minúsculas para comparación insensible a mayúsculas/minúsculas
+// Mapeo de tecnologías con colores más vivos y saturados
 const techColors: Record<string, string> = {
     // Lenguajes de programación
-    'javascript': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-    'js': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-    'typescript': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'ts': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'python': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'java': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    'c#': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'csharp': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'php': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-    'ruby': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    'go': 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300',
-    'golang': 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300',
-    'rust': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
-    'kotlin': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-    'swift': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
+    'javascript': 'bg-yellow-500 text-black',
+    'js': 'bg-yellow-500 text-black',
+    'typescript': 'bg-blue-600 text-white',
+    'ts': 'bg-blue-600 text-white',
+    'python': 'bg-blue-500 text-white',
+    'java': 'bg-red-600 text-white',
+    'c#': 'bg-purple-600 text-white',
+    'csharp': 'bg-purple-600 text-white',
+    'php': 'bg-indigo-600 text-white',
+    'ruby': 'bg-red-500 text-white',
+    'go': 'bg-cyan-500 text-white',
+    'golang': 'bg-cyan-500 text-white',
+    'rust': 'bg-orange-600 text-white',
+    'kotlin': 'bg-purple-500 text-white',
+    'swift': 'bg-orange-500 text-white',
     
     // Frameworks frontend
-    'react': 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300',
-    'vue': 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-300',
-    'angular': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    'svelte': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
-    'next': 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300',
-    'nuxt': 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-300',
-    'astro': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-    'gatsby': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    'react': 'bg-cyan-400 text-black',
+    'vue': 'bg-emerald-500 text-white',
+    'angular': 'bg-red-500 text-white',
+    'svelte': 'bg-orange-500 text-white',
+    'next': 'bg-gray-800 text-white',
+    'next.js': 'bg-gray-800 text-white',
+    'nuxt': 'bg-emerald-400 text-white',
+    'astro': 'bg-purple-500 text-white',
+    'gatsby': 'bg-purple-600 text-white',
     
     // Frameworks backend
-    'node': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'express': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'nestjs': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    'django': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'flask': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-    'spring': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'laravel': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    'rails': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    '.net': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-    'asp.net': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    'node': 'bg-green-600 text-white',
+    'express': 'bg-green-500 text-white',
+    'nestjs': 'bg-red-600 text-white',
+    'django': 'bg-green-700 text-white',
+    'flask': 'bg-gray-700 text-white',
+    'spring': 'bg-green-600 text-white',
+    'laravel': 'bg-red-500 text-white',
+    'rails': 'bg-red-600 text-white',
+    '.net': 'bg-purple-600 text-white',
+    'asp.net': 'bg-purple-600 text-white',
     
     // Bases de datos
-    'sql': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'mysql': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'postgresql': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'mongodb': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'redis': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    'sqlite': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'oracle': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    'firebase': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-    'supabase': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'sql': 'bg-blue-600 text-white',
+    'mysql': 'bg-blue-500 text-white',
+    'postgresql': 'bg-blue-700 text-white',
+    'mongodb': 'bg-green-500 text-white',
+    'redis': 'bg-red-600 text-white',
+    'sqlite': 'bg-blue-500 text-white',
+    'oracle': 'bg-red-700 text-white',
+    'firebase': 'bg-yellow-600 text-white',
+    'supabase': 'bg-green-600 text-white',
     
     // Estilos y diseño
-    'css': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'html': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
-    'tailwind': 'bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-300',
-    'bootstrap': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-    'sass': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
-    'less': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'styled': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
+    'css': 'bg-blue-500 text-white',
+    'html': 'bg-orange-500 text-white',
+    'tailwind': 'bg-teal-500 text-white',
+    'bootstrap': 'bg-purple-600 text-white',
+    'sass': 'bg-pink-500 text-white',
+    'less': 'bg-blue-600 text-white',
+    'styled': 'bg-pink-600 text-white',
     
     // Herramientas y utilities
-    'docker': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'kubernetes': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'git': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
-    'github': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-    'gitlab': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
-    'aws': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-    'azure': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'gcp': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'graphql': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
-    'rest': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'api': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'docker': 'bg-blue-600 text-white',
+    'kubernetes': 'bg-blue-700 text-white',
+    'git': 'bg-orange-600 text-white',
+    'github': 'bg-gray-800 text-white',
+    'gitlab': 'bg-orange-600 text-white',
+    'aws': 'bg-yellow-600 text-white',
+    'azure': 'bg-blue-600 text-white',
+    'gcp': 'bg-blue-500 text-white',
+    'graphql': 'bg-pink-600 text-white',
+    'rest': 'bg-green-600 text-white',
+    'api': 'bg-green-500 text-white',
     
     // Plataformas y targets
-    'mobile': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-    'pc': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'desktop': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'ios': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-    'android': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'web': 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300',
-    'server': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-    'cloud': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'mobile': 'bg-purple-600 text-white',
+    'pc': 'bg-blue-600 text-white',
+    'desktop': 'bg-blue-600 text-white',
+    'ios': 'bg-gray-800 text-white',
+    'android': 'bg-green-600 text-white',
+    'web': 'bg-cyan-500 text-white',
+    'server': 'bg-gray-700 text-white',
+    'cloud': 'bg-blue-500 text-white',
     
     // Tipos de proyecto
-    'landingpage': 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300',
-    'landing': 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300',
-    'ecommerce': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-    'dashboard': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'blog': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'portfolio': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-    'cms': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-    'saas': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    'landingpage': 'bg-indigo-600 text-white',
+    'landing': 'bg-indigo-600 text-white',
+    'ecommerce': 'bg-yellow-600 text-white',
+    'dashboard': 'bg-blue-600 text-white',
+    'blog': 'bg-green-600 text-white',
+    'portfolio': 'bg-purple-600 text-white',
+    'cms': 'bg-gray-700 text-white',
+    'saas': 'bg-blue-600 text-white',
     
     // UI/UX y diseño
-    'ui': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
-    'ux': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-    'design': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
-    'figma': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
-    'adobe': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    'sketch': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    'ui': 'bg-pink-600 text-white',
+    'ux': 'bg-purple-600 text-white',
+    'design': 'bg-pink-500 text-white',
+    'figma': 'bg-pink-500 text-white',
+    'adobe': 'bg-red-600 text-white',
+    'sketch': 'bg-yellow-600 text-white',
     
     // Específicos de Microsoft
-    'xaml': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'wpf': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'winforms': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'uwp': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'blazor': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    'xaml': 'bg-blue-600 text-white',
+    'wpf': 'bg-blue-700 text-white',
+    'winforms': 'bg-blue-600 text-white',
+    'uwp': 'bg-blue-600 text-white',
+    'blazor': 'bg-purple-600 text-white',
+    'maui': 'bg-purple-700 text-white',
     
     // Testing
-    'jest': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    'testing': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    'cypress': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'vitest': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    'jest': 'bg-red-600 text-white',
+    'testing': 'bg-red-500 text-white',
+    'cypress': 'bg-green-600 text-white',
+    'vitest': 'bg-yellow-600 text-white',
     
     // DevOps
-    'ci/cd': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'devops': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'jenkins': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    'terraform': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    'ci/cd': 'bg-blue-600 text-white',
+    'devops': 'bg-blue-700 text-white',
+    'jenkins': 'bg-red-600 text-white',
+    'terraform': 'bg-purple-600 text-white',
     
     // Métodologías
-    'agile': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'scrum': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'kanban': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300'
+    'agile': 'bg-green-600 text-white',
+    'scrum': 'bg-green-500 text-white',
+    'kanban': 'bg-blue-600 text-white',
+    
+    // Servicios específicos
+    'google console': 'bg-blue-500 text-white',
+    'sql server': 'bg-red-600 text-white',
 };
 
-// Función para normalizar y buscar coincidencias
 function getColorClass(text: string): string {
-    // Convertir a minúsculas y quitar espacios/puntuación extra
     const normalizedText = text.toLowerCase().trim();
     
-    // Primero buscar coincidencia exacta
     if (techColors[normalizedText]) {
         return techColors[normalizedText];
     }
     
-    // Buscar coincidencias parciales (para textos como "React Native", "Next.js", etc.)
     for (const [key, value] of Object.entries(techColors)) {
-        // Verificar si el texto contiene la clave
         if (normalizedText.includes(key)) {
-            return value;
-        }
-        
-        // También verificar sin espacios o con guiones
-        const textWithoutSpaces = normalizedText.replace(/[\s\-_\.]/g, '');
-        if (textWithoutSpaces.includes(key)) {
             return value;
         }
     }
     
-    // Si no hay coincidencia, usar color por defecto
-    return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
+    // Color por defecto más vivo
+    return 'bg-gray-600 text-white';
 }
 
 const colorClass = getColorClass(text);
