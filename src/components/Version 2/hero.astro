@@ -1,28 +1,64 @@
 ---
 import Badge from './UI/badge.astro'
+
+const social = [
+    {
+        page : 'Github',
+        link : 'https://github.com/AnthonyDev65',
+        icon : 'ri-github-fill'
+    },
+
+    {
+        page : 'LinkedIn',
+        link : 'https://www.linkedin.com/in/anthoni-castillo-moncion-907a903a1/',
+        icon : 'ri-linkedin-box-fill'
+    },
+
+    {
+        page : 'Email',
+        link : 'mailto:castilloantony709@gmail.com',
+        icon : 'ri-at-line'
+    },
+]
+
+
+
 ---
 
 
 
 <section class="w-full grid auto-rows-[172px] grid-cols-6 gap-4 mt-22">
 
-    <div class="row-span-2 col-span-6 rounded-3xl bg-[#1C1E23] relative flex flex-col overflow-hidden gap-10 justify-end p-6 dark:bg-raisin-black xl:col-span-4 lg:items-end sm:flex-row  lg:p-10">
-
+    <div class="row-span-2 col-span-6 rounded-3xl bg-[#1C1E23] relative flex overflow-hidden    gap-10 dark:bg-raisin-black xl:col-span-4 lg:items-end sm:flex-row">
+        <img class="absolute object-cover object-center"  src="https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg" alt="">
+       
+        <div class="absolute flex flex-col justify-end z-1 w-full h-full border-5 rounded-3xl  border-amber-400 p-5" style="font-family: outfit;">
+            
+            <h1 class="text-3xl font-bold text-white">Anthoni Castillo</h1>
+            <p class="text-lg font-medium leading-9 opacity-70 text-white">Desarrollador Front-End</p>
+            
+            <div class="flex flex-wrap items-center mt-1 gap-2 lg:gap-3">
+                {social.map(sc => 
+                    <a class="flex items-center font-medium bg-moonlit rounded-lg text-dusky gap-2 active:scale-[1.1] transition-transform duration-300" target="_blank" href={sc.link}>
+                        <div class="bg-white flex gap-2 py-1 px-3 rounded-lg" >
+                            <i class={`${sc.icon} w-[1em] h-[1em]`}></i>
+                            <span class="lg:flex">{sc.page}</span>
+                        </div>
+                    </a>
+                )}
+            </div>
+            
+        </div>
     </div>
     
     <div style="font-family: Outfit;" class="text-white row-span-1 col-span-6 rounded-3xl bg-[#1C1E23] relative flex flex-col overflow-hidden border-2 border-transparent gap-2 p-7 dark:bg-raisin-black xl:col-span-2 lg:p-7">
-        
-        
         <h2 class="text-2xl font-bold z-1">About</h2>
         <p class="text-base w-full z-1 opacity-70">
             Web developer with experience in designing, developing and maintaining front-end web applications.
         </p>
     </div>
 
-
-
     <div style="font-family: outfit;" class="row-span-1 col-span-3 rounded-3xl bg-[#1C1E23] relative flex flex-col overflow-hidden border-2 border-transparent gap-2 items-center justify-center dark:bg-raisin-black xl:col-span-1">
-
         <p class="text-7xl z-1 font-bold flex items-center gap-1 text-amber-300">
             <span>+</span>
             <span>3</span>
