@@ -132,5 +132,19 @@ export const LandingExperience = [
         hasGithubLink: true,
         githubLink: 'https://github.com/AnthonyDev65/Fonicris',
         img: '/appsShowcase/FonicrisWeb.png',
+    },
+    {
+        App: "NewUnitasks",
+        Descripcion: "Sistema integral de gestión de inventario desarrollado para orfanatos. Permite el control completo de activos con funcionalidades CRUD, sistema de roles (Prime, Admin, Editor, Visualizador), generación de códigos QR, carga de imágenes, dashboard con estadísticas, historial de actividades y gestión de usuarios. Integrado con Google Sheets como base de datos y Google Drive para almacenamiento de archivos.",
+        Categoria: "Aplicaciones Web",
+        tecnologias: ["React", "TypeScript", "Tailwind CSS", "Google Sheets API", "Google Drive API", "Zustand", "Recharts", "Vite"],
+        badge: true,
+        BadgeText: 'Reciente',
+        BadgeColor: 'bg-green-500',
+        hasWebLink: false,
+        webLink: 'https://fonicris.versatile.do',
+        hasGithubLink: true,
+        githubLink: 'https://github.com/AnthonyDev65/Fonicris',
+        img: '/appsShowcase/FonicrisWeb.png',
     }
 ]
