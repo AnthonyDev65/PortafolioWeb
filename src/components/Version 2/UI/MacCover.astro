@@ -5,50 +5,89 @@ export interface Props {
 }
 
 const {
-    img = '/public/appsShowcase/FonicrisPC.png',
-    url = 'https://example.com',
+    img = "/public/appsShowcase/FonicrisPC.png",
+    url = "https://example.com",
 } = Astro.props;
---- 
+---
 
-
-<div class="w-177 h-[442.50px] rounded-2xl bg-[#7d7d7d] p-px overflow-hidden">
-
-    <header style="border-radius: 15px 15px 0px 0px;" class="flex bg-[#E5E2E3] items-center py-2">
-
+<div
+    class="w-177 h-auto rounded-2xl bg-[#7d7d7d] p-px overflow-hidden flex flex-col"
+>
+    <header
+        style="border-radius: 15px 15px 0px 0px;"
+        class="flex bg-[#E5E2E3] items-center py-2 shrink-0"
+    >
         <div class="flex justify-start px-4 gap-2 items-center">
-            <span class="h-3 w-3 bg-[#FE5C5A] rounded-full hover:contrast-80"></span>
-            <span class="h-3 w-3 bg-[#FEBB34] rounded-full hover:contrast-80"></span>
-            <span class="h-3 w-3 bg-[#2EC53B] rounded-full hover:contrast-80"></span>
+            <span class="h-3 w-3 bg-[#FE5C5A] rounded-full hover:contrast-80"
+            ></span>
+            <span class="h-3 w-3 bg-[#FEBB34] rounded-full hover:contrast-80"
+            ></span>
+            <span class="h-3 w-3 bg-[#2EC53B] rounded-full hover:contrast-80"
+            ></span>
 
             <div class="flex ml-2 gap-2">
-                <span class="h-5 w-5 bg-white flex justify-center items-center rounded-full hover:contrast-50">
-                    <svg class="opacity-30" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
-                        <path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z">
-                            </path>
-                        </svg>
+                <span
+                    class="h-5 w-5 bg-white flex justify-center items-center rounded-full hover:contrast-50"
+                >
+                    <svg
+                        class="opacity-30"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="black"
+                    >
+                        <path
+                            d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"
+                        >
+                        </path>
+                    </svg>
                 </span>
 
-                <span class="h-5 w-5 bg-white flex justify-center items-center rounded-full hover:contrast-50">
-                    <svg class="opacity-30" width="16"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
-                        <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                <span
+                    class="h-5 w-5 bg-white flex justify-center items-center rounded-full hover:contrast-50"
+                >
+                    <svg
+                        class="opacity-30"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="black"
+                    >
+                        <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        >
                         </path>
                     </svg>
                 </span>
             </div>
         </div>
 
-        <div class="flex items-center justify-between w-full bg-white rounded-full mr-8 px-2">
-            <p style="font-family: Outfit;" class="opacity-40 text-[12px] text-black">{url}
+        <div
+            class="flex items-center justify-between w-full bg-white rounded-full mr-8 px-2"
+        >
+            <p
+                style="font-family: Outfit;"
+                class="opacity-40 text-[12px] text-black"
+            >
+                {url}
             </p>
-            <svg class="opacity-30" xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 24 24" fill="black">
-                <path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z">
+            <svg
+                class="opacity-30"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                viewBox="0 0 24 24"
+                fill="black"
+            >
+                <path
+                    d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"
+                >
                 </path>
             </svg>
         </div>
     </header>
-    <div class="relative w-full h-full bg-white overflow-hidden">
+    <div class="relative w-full bg-white overflow-hidden">
         <div>
-            <img src={img} alt="">
+            <img src={img} alt="" class="w-full h-auto block" />
         </div>
     </div>
 </div>

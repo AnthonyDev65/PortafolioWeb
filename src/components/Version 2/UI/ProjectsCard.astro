@@ -1,6 +1,6 @@
 ---
-import { map } from 'astro:schema';
-import Badge from '../UI/badge.astro';
+import { map } from "astro:schema";
+import Badge from "../UI/badge.astro";
 
 export interface Props {
     category?: string;
@@ -17,54 +17,171 @@ const {
     title,
     description,
     tags = [],
-    badge = false, 
+    badge = false,
     badgeText = "New Projects",
-    badgeColor = "bg-red-500",  
+    badgeColor = "bg-red-500",
     link = "#",
 } = Astro.props;
 ---
 
-<div class="relative flex flex-col rounded-3xl text-white bg-[#1C1E23] p-6 gap-3 border-2 border-transparent overflow-hidden row-span-1 col-span-8 lg:p-8 lg:row-span-4 xl:col-span-4" style="opacity: 1; transform: none;">
-    <div class="flex flex-col gap-3 ">
-
+<div
+    class="relative flex flex-col rounded-3xl text-white bg-[#1C1E23] p-6 gap-3 border-2 border-transparent overflow-hidden row-span-1 col-span-8 lg:p-8 lg:row-span-4 xl:col-span-4"
+    style="opacity: 1; transform: none;"
+>
+    <div class="flex flex-col gap-3">
         <header class="flex items-center gap-3 opacity-50 z-1">
-            <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 5l-8-4-8 4 8 4 8-4zM8 2.328l5.345 2.672-5.345 2.672-5.345-2.672 5.345-2.672zM14.398 7.199l1.602 0.801-8 4-8-4 1.602-0.801 6.398 3.199zM14.398 10.199l1.602 0.801-8 4-8-4 1.602-0.801 6.398 3.199z"></path></svg>
+            <svg
+                stroke="currentColor"
+                fill="currentColor"
+                stroke-width="0"
+                version="1.1"
+                viewBox="0 0 16 16"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                    d="M16 5l-8-4-8 4 8 4 8-4zM8 2.328l5.345 2.672-5.345 2.672-5.345-2.672 5.345-2.672zM14.398 7.199l1.602 0.801-8 4-8-4 1.602-0.801 6.398 3.199zM14.398 10.199l1.602 0.801-8 4-8-4 1.602-0.801 6.398 3.199z"
+                ></path></svg
+            >
             <span class="font-semibold uppercase">
                 <span style="font-family: outfit;">{category}</span>
             </span>
         </header>
 
-        {badge && (
-
-        <div class={`absolute flex items-center justify-center text-white ${badgeColor} gap-2 p-2 rounded-lg bottom-3 z-10 lg:bottom-auto lg:right-24 lg:rounded-2xl lg:py-1 lg:px-3`}>
-            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M216 23.86c0-23.8-30.65-32.77-44.15-13.04C48 191.85 224 200 224 288c0 35.63-29.11 64.46-64.85 63.99-35.17-.45-63.15-29.77-63.15-64.94v-85.51c0-21.7-26.47-32.23-41.43-16.5C27.8 213.16 0 261.33 0 320c0 105.87 86.13 192 192 192s192-86.13 192-192c0-170.29-168-193-168-296.14z"></path></svg>
-            {badgeText}
-        </div>
-
-        )}
-        <a href={link} class="p-2 border-2 border-dusky dark:border-moonlit opacity-40 rounded-full absolute top-6 right-6 lg:top-8 lg:right-8 cursor-pointer hover:bg-dusky hover:text-white dark:hover:bg-moonlit dark:hover:text-dusky transition-colors duration-150 z-1">
-            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"></path></svg>
+        {
+            badge && (
+                <div
+                    class={`absolute flex items-center justify-center text-white ${badgeColor} gap-2 p-2 rounded-lg bottom-3 z-10 lg:bottom-auto lg:right-24 lg:rounded-2xl lg:py-1 lg:px-3`}
+                >
+                    <svg
+                        stroke="currentColor"
+                        fill="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 384 512"
+                        height="1em"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path d="M216 23.86c0-23.8-30.65-32.77-44.15-13.04C48 191.85 224 200 224 288c0 35.63-29.11 64.46-64.85 63.99-35.17-.45-63.15-29.77-63.15-64.94v-85.51c0-21.7-26.47-32.23-41.43-16.5C27.8 213.16 0 261.33 0 320c0 105.87 86.13 192 192 192s192-86.13 192-192c0-170.29-168-193-168-296.14z" />
+                    </svg>
+                    {badgeText}
+                </div>
+            )
+        }
+        <a
+            href={link}
+            class="p-2 border-2 border-dusky dark:border-moonlit opacity-40 rounded-full absolute top-6 right-6 lg:top-8 lg:right-8 cursor-pointer hover:bg-dusky hover:text-white dark:hover:bg-moonlit dark:hover:text-dusky transition-colors duration-150 z-1"
+        >
+            <svg
+                stroke="currentColor"
+                fill="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path fill="none" d="M0 0h24v24H0z"></path><path
+                    d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"></path></svg
+            >
         </a>
-        
 
-        <div class="flex flex-col gap-1 z-1">
-            <h3 style="font-family: outfit;" class="text-3xl font-bold">{title}</h3> 
-            <p class="opacity-70" style="font-family: outfit;">{description}</p>
-            <div class="flex flex-wrap items-center gap-2 opacity-90 font-medium mt-2">
-                
-                {
-                tags.map(tags => (
-                    <Badge text={tags}/>
-                ))}
+        <div
+            class="flex flex-col gap-1 z-1 projects-card-description-container"
+        >
+            <h3 style="font-family: outfit;" class="text-3xl font-bold">
+                {title}
+            </h3>
 
+            <div class="flex flex-wrap items-baseline gap-1">
+                <p
+                    class="opacity-70 project-description truncate flex-1 min-w-0"
+                    style="font-family: outfit;"
+                >
+                    {description}
+                </p>
+                <button
+                    class="read-more-btn text-start text-sm font-semibold text-blue-400 hover:text-blue-300 hidden w-fit whitespace-nowrap"
+                    >Ver más</button
+                >
             </div>
 
-            
+            <div
+                class="flex flex-wrap items-center gap-2 opacity-90 font-medium mt-2"
+            >
+                {tags.map((tags) => <Badge text={tags} />)}
+            </div>
         </div>
 
+        <script>
+            function setupReadMoreDesktop() {
+                const containers = document.querySelectorAll(
+                    ".projects-card-description-container",
+                );
+
+                containers.forEach((container) => {
+                    const description = container.querySelector(
+                        ".project-description",
+                    );
+                    const button = container.querySelector(".read-more-btn");
+
+                    if (
+                        description &&
+                        button &&
+                        button instanceof HTMLElement &&
+                        description instanceof HTMLElement
+                    ) {
+                        // Check if content is overflowing
+                        const isOverflowing =
+                            description.scrollWidth > description.clientWidth;
+
+                        if (isOverflowing) {
+                            button.classList.remove("hidden");
+                        }
+
+                        // Remove old event listeners to avoid duplicates if re-running
+                        if (button.parentNode) {
+                            const newButton = button.cloneNode(
+                                true,
+                            ) as HTMLButtonElement;
+                            button.parentNode.replaceChild(newButton, button);
+
+                            newButton.addEventListener("click", (e) => {
+                                const btn =
+                                    e.currentTarget as HTMLButtonElement;
+                                if (!btn) return;
+
+                                const currentContainer = btn.closest(
+                                    ".projects-card-description-container",
+                                );
+                                if (!currentContainer) return;
+
+                                const desc = currentContainer.querySelector(
+                                    ".project-description",
+                                );
+                                if (!desc) return;
+
+                                if (desc.classList.contains("truncate")) {
+                                    desc.classList.remove("truncate");
+                                    desc.classList.add("whitespace-normal");
+                                    btn.textContent = "Ver menos";
+                                } else {
+                                    desc.classList.add("truncate");
+                                    desc.classList.remove("whitespace-normal");
+                                    btn.textContent = "Ver más";
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+
+            // Run on invalidation or load (Project might use view transitions or standard load)
+            document.addEventListener("astro:page-load", setupReadMoreDesktop);
+            document.addEventListener("DOMContentLoaded", setupReadMoreDesktop);
+        </script>
+
         <div>
-            <slot/>
+            <slot />
         </div>
-        
     </div>
 </div>

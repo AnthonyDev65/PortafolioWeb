@@ -5,25 +5,30 @@ export interface Props {
 }
 
 const {
-    img = '/public/appsShowcase/FonicrisPC.png',
-    url = 'https://example.com',
+    img = "/public/appsShowcase/FonicrisPC.png",
+    url = "https://example.com",
 } = Astro.props;
---- 
+---
 
-<div class="w-177 h-[442.50px] rounded-2xl bg-[#7d7d7d] p-px overflow-hidden">
-
-    <header style="border-radius: 15px 15px 0px 0px;" class="flex bg-[#E5E2E3] items-center py-2">
-
+<div
+    class="w-177 h-auto rounded-2xl bg-[#7d7d7d] p-px overflow-hidden flex flex-col"
+>
+    <header
+        style="border-radius: 15px 15px 0px 0px;"
+        class="flex bg-[#E5E2E3] items-center py-2 shrink-0"
+    >
         <div class="flex justify-start px-4 gap-2 items-center">
-            <span class="h-3 w-3 bg-[#FE5C5A] rounded-full hover:contrast-80"></span>
-            <span class="h-3 w-3 bg-[#FEBB34] rounded-full hover:contrast-80"></span>
-            <span class="h-3 w-3 bg-[#2EC53B] rounded-full hover:contrast-80"></span>
+            <span class="h-3 w-3 bg-[#FE5C5A] rounded-full hover:contrast-80"
+            ></span>
+            <span class="h-3 w-3 bg-[#FEBB34] rounded-full hover:contrast-80"
+            ></span>
+            <span class="h-3 w-3 bg-[#2EC53B] rounded-full hover:contrast-80"
+            ></span>
         </div>
-
     </header>
-    <div class="relative w-full h-full bg-black overflow-hidden">
+    <div class="relative w-full bg-black overflow-hidden">
         <div>
-            <img src={img} alt="">
+            <img src={img} alt="" class="w-full h-auto block" />
         </div>
     </div>
 </div>
