@@ -43,7 +43,7 @@ const { project } = Astro.props;
                 {
                     project.badge && (
                         <div
-                            class={`flex items-center justify-center text-white bg-red-500 gap-2 px-3 py-2 rounded-full h-10`}
+                            class={`flex items-center justify-center text-white ${project.BadgeColor} gap-2 px-3 py-2 rounded-full h-10`}
                         >
                             <svg
                                 stroke="currentColor"

@@ -6,7 +6,7 @@ export const Experience = [
         tecnologias: ["React", "TypeScript", "Tailwind CSS", "Google Sheets API", "Google Drive API", "Zustand", "Recharts", "Vite"],
         badge: true,
         BadgeText: 'Reciente',
-        BadgeColor: 'bg-green-500',
+        BadgeColor: 'bg-red-500',
         hasWebLink : false,
         webLink : '',
         hasGithubLink : false,
@@ -22,7 +22,7 @@ export const Experience = [
         tecnologias : [
             "Mobile", "C#", "XAML", ".NET" , "SQLite"
         ],
-        badge : false,
+        badge : false,  
         BadgeText : 'Reciente',
         BadgeColor : ' ',
         hasWebLink : false,
@@ -40,7 +40,7 @@ export const Experience = [
         tecnologias: ["React", "TypeScript", "Tailwind CSS", "Supabase", "Zustand", "Framer Motion", "Vite", "PWA"],
         badge: true,
         BadgeText: 'Reciente',
-        BadgeColor: 'bg-green-500',
+        BadgeColor: 'bg-red-500',
         hasWebLink: false, // Cambiar a true si despliegas en Vercel/Netlify
         webLink: '', 
         hasGithubLink: true,
@@ -99,13 +99,35 @@ export const LandingExperience = [
         img: '/appsShowcase/owen.png',
     },
     {
+        App: "Zogue",
+        Descripcion: "Plataforma e-commerce de perfumes de lujo para República Dominicana con diseño editorial minimalista. Incluye catálogo con sistema de descuentos, búsqueda avanzada, panel administrativo completo con CRUD, gestión de inventario, carrusel de productos relacionados, integración con WhatsApp para ventas, y meta tags Open Graph para compartir en redes sociales. Optimizado para móviles con UX adaptativa.",
+        Categoria: "E-commerce",
+        tecnologias: [
+            "Astro 5",
+            "React 19",
+            "TypeScript",
+            "Tailwind CSS v4",
+            "Supabase",
+            "PostgreSQL",
+            "Node.js"
+        ],
+        badge: true,  
+        BadgeText: 'Reciente',
+        BadgeColor: 'bg-red-500',
+        hasWebLink: true,
+        webLink: 'https://zogue.store', // Cambiar por la URL real cuando esté deployado
+        hasGithubLink: false, // Cambiar a true si quieres compartir el repo
+        githubLink: '', // Agregar URL del repo si decides hacerlo público
+        img: '/appsShowcase/zogue.png', // Necesitarás agregar un screenshot
+    },
+    {
         App: "UniTasks",
         Descripcion: "Plataforma social universitaria completa para estudiantes - conecta, comparte y organiza tu vida académica con grupos de estudio, eventos, sistema de amigos y notificaciones en tiempo real",
         Categoria: "Aplicaciones Web",
         tecnologias: ["React", "TypeScript", "Supabase", "Vite", "CSS"],
         badge: true,
         BadgeText: 'Nuevo',
-        BadgeColor: 'bg-gradient-to-r from-blue-500 to-purple-600',
+        BadgeColor: 'bg-red-500',
         hasWebLink: false,
         webLink: '',
         hasGithubLink: true,
@@ -119,34 +141,13 @@ export const LandingExperience = [
         tecnologias: ["React", "TypeScript", "Tailwind CSS", "Google Sheets API", "Google Drive API", "Zustand", "Recharts", "Vite"],
         badge: true,
         BadgeText: 'Reciente',
-        BadgeColor: 'bg-green-500',
+        BadgeColor: 'bg-red-500',
         hasWebLink: false,
         webLink: 'https://fonicris.versatile.do',
         hasGithubLink: true,
         githubLink: 'https://github.com/AnthonyDev65/Fonicris',
         img: '/appsShowcase/FonicrisWeb.png',
     },
-    {
-        App: "Zogue",
-        Descripcion: "Plataforma e-commerce de perfumes de lujo para República Dominicana con diseño editorial minimalista. Incluye catálogo con sistema de descuentos, búsqueda avanzada, panel administrativo completo con CRUD, gestión de inventario, carrusel de productos relacionados, integración con WhatsApp para ventas, y meta tags Open Graph para compartir en redes sociales. Optimizado para móviles con UX adaptativa.",
-        Categoria: "E-commerce",
-        tecnologias: [
-            "Astro 5",
-            "React 19",
-            "TypeScript",
-            "Tailwind CSS v4",
-            "Supabase",
-            "PostgreSQL",
-            "Node.js"
-        ],
-        badge: true,
-        BadgeText: 'Reciente',
-        BadgeColor: 'bg-green-500',
-        hasWebLink: true,
-        webLink: 'https://zogue.shop', // Cambiar por la URL real cuando esté deployado
-        hasGithubLink: false, // Cambiar a true si quieres compartir el repo
-        githubLink: '', // Agregar URL del repo si decides hacerlo público
-        img: '/appsShowcase/zogue.png', // Necesitarás agregar un screenshot
-    }
+    
     
 ]
